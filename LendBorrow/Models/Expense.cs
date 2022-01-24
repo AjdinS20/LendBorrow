@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LendBorrow.Models
 {
@@ -16,5 +17,11 @@ namespace LendBorrow.Models
 
         [DisplayName("Cijena")]
         public int Amount { get; set; }
+
+        //[DisplayName("Tip troška")]
+       public int ExpenseTypeId { get; set; }
+        [DisplayName("Tip Troška")]
+        [ForeignKey("ExpenseTypeId")]
+        public virtual ExpenseType ExpenseType { get; set; }
     }
 }

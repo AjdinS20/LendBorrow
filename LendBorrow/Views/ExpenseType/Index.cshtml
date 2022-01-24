@@ -1,0 +1,48 @@
+﻿
+@model IEnumerable<LendBorrow.Models.ExpenseType>
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col pt-6">
+            <h2 class="text-primary">Moji tipovi troškova</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-controller="ExpenseType" asp-action="Create" class="btn btn-primary">Dodaj novi tip torška</a>
+        </div>
+    </div>
+    <br />
+
+    @if(Model.Count()>0)
+    {
+       <table class="table table-bordered table-striped" style="width:100%">
+           <thead>
+               <tr>
+                   <th>
+                       Trošak
+                   </th>
+               </tr>
+           </thead>
+           <tbody>
+                @foreach(var expenseType in Model)
+                {
+                    <tr>
+                        <td width="50%">@expenseType.Name</td>
+                        
+                        <td width="50%">
+                            <div class="w-100 btn-group">
+                                <a asp-controller="ExpenseType" asp-action="Update" asp-route-Id="@expenseType.Id" class="btn btn-primary mx-1">Uredi</a>
+                                <a asp-controller="ExpenseType" asp-action="Delete" asp-route-Id="@expenseType.Id" class="btn btn-danger mx-1">Izbriši</a>
+                            </div>
+                            
+                        </td>
+                    </tr>
+                }
+            </tbody>
+       </table>
+       }
+    else
+        {
+            <p>Trenutno nema kreiranih troškova</p>
+        }
+
+</div>
